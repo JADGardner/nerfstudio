@@ -1,4 +1,4 @@
-FROM dromni/nerfstudio:0.3.0
+FROM dromni/nerfstudio:0.3.3
 
 USER root
 
