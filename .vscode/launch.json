@@ -47,6 +47,14 @@
       "args": ["instant_ngp"]
     },
     {
+      "name": "Python: train reni-neus",
+      "type": "python",
+      "request": "launch",
+      "program": "nerfstudio/scripts/train.py",
+      "console": "integratedTerminal",
+      "args": ["reni-neus", "--vis=wandb"]
+    },
+    {
       "name": "Python: train ngp nerfstudio",
       "type": "python",
       "request": "launch",
