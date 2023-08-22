@@ -21,14 +21,15 @@ I also recommend:
 - Forking nerfstudio
 - Structuring your project as an extension module of Nerfstudio
 - Implementing Your project as seperate Git repo
-- Submodule your project in your nerfstudio fork
 - Symlinking a data folder into the project
+- Submodule your new project in your nerfstudio fork
 
 ```shell
 cd /users/$USER/scratch/code/
 git clone /url/of/your/nerfstudio/fork
-git submodule add /url/of/your/project/repo
+cd /users/$USER/scratch/code/nerfstudio
 ln -s /users/$USER/scratch/data/ .
+git submodule add /url/of/your/subproject/repo
 ```
 
 ### To build a container
@@ -93,3 +94,29 @@ cp /shared/containers/apptainer_shell.sh /your/prefered/location/
 # Installing Nerfstudio
 
 #### 1. Creat a virtual environment:
+
+You can launch singularity with the required arguments using this script. This assumes the apptainer container is as /users/$USER/scratch/.apptainer/containers/nerfstudio.sif.
+
+```shell
+#!/bin/bash
+
+apptainer shell --nv --no-home \
+  -B /mnt/scratch/users/$USER:/users/$USER/scratch \
+  -B /users/$USER/.bashrc:/users/$USER/.bashrc \
+  -B /users/$USER/scratch/.config:/users/$USER/.config \
+  -B /users/$USER/scratch/.local:/users/$USER/.local \
+  -B /users/$USER/scratch/.apptainer/pip_venvs:/mnt \
+  -B /users/$USER/.vscode-server:/users/$USER/.vscode-server \
+  -B /users/$USER/.jupyter:/users/$USER/.jupyter \
+  --env MPLCONFIGDIR=/users/$USER/scratch/.config/matplotlib \
+  /users/$USER/scratch/.apptainer/containers/nerfstudio.sif
+```
+
+If you save this script as apptainer_shell.sh and placed at /users/$USER/scratch/code/nerfstudio/.devcontainer/
+<br>
+Then you would run it with
+
+```shell
+cd /users/$USER/scratch/code/nerfstudio
+./.devcontainer/apptainer.shell.sh
+```
