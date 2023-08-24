@@ -55,6 +55,22 @@
       "args": ["reni-neus", "--vis=wandb"]
     },
     {
+      "name": "Python: train reni",
+      "type": "python",
+      "request": "launch",
+      "program": "nerfstudio/scripts/train.py",
+      "console": "integratedTerminal",
+      "args": ["reni", "--vis=wandb"]
+    },
+    {
+      "name": "Python: train nerfacto-reni",
+      "type": "python",
+      "request": "launch",
+      "program": "nerfstudio/scripts/train.py",
+      "console": "integratedTerminal",
+      "args": ["nerfacto-reni"]
+    },
+    {
       "name": "Python: train ngp nerfstudio",
       "type": "python",
       "request": "launch",
