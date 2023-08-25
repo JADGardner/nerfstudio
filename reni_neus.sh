@@ -3,7 +3,7 @@
 #SBATCH --mail-type=END,FAIL
 #SBATCH --mail-user=james.gardner@york.ac.uk
 #SBATCH --ntasks=1
-#SBATCH --cpus-per-task=4
+#SBATCH --cpus-per-task=8
 #SBATCH --mem=64gb
 #SBATCH --time=10:00:00
 #SBATCH --output=cuda_job_%j.log
