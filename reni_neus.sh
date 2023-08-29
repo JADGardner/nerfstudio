@@ -5,7 +5,7 @@
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=8
 #SBATCH --mem=64gb
-#SBATCH --time=10:00:00
+#SBATCH --time=15:00:00
 #SBATCH --output=cuda_job_%j.log
 #SBATCH --partition=gpu
 #SBATCH --gres=gpu:1
