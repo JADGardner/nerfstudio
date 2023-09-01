@@ -71,6 +71,14 @@
       "args": ["nerfacto-reni"]
     },
     {
+      "name": "Python: train pnerf",
+      "type": "python",
+      "request": "launch",
+      "program": "nerfstudio/scripts/train.py",
+      "console": "integratedTerminal",
+      "args": ["pnerf"]
+    },
+    {
       "name": "Python: train ngp nerfstudio",
       "type": "python",
       "request": "launch",
