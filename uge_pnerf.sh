@@ -1,7 +1,7 @@
 #!/bin/bash
 #$ -cwd                        # Run job from current directory
 #$ -j y                        # Combine stdout and stderr into a single file
-#$ -N reni_neus                # Name of the job
+#$ -N pnerf                    # Name of the job
 #$ -m bea                      # Send email at the beginning and end of the job and if aborted
 #$ -M james.gardner@york.ac.uk # The email address to notify
 #$ -pe smp 8                   # 8 cores (8 cores per GPU)

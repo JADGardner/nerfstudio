@@ -1,14 +1,16 @@
 #!/bin/bash
-#$ -cwd                        # Run job from current directory
-#$ -j y                        # Combine stdout and stderr into a single file
-#$ -N reni_neus                # Name of the job
-#$ -m bea                      # Send email at the beginning and end of the job and if aborted
-#$ -M james.gardner@york.ac.uk # The email address to notify
-#$ -pe smp 8                   # 8 cores (8 cores per GPU)
-#$ -l h_rt=8:0:0               # 1 hour runtime required to run on the short queue
-#$ -l h_vmem=11G               # 11 * 8 = 88G total RAM
-#$ -l gpu=1                    # request 1 GPU
-#$ -o output_$JOB_ID.txt       # output file
+DATE_STR=$(date +%Y%m%d_%H%M%S)
+#$ -cwd                                                 # Run job from current directory
+#$ -j y                                                 # Combine stdout and stderr into a single file
+#$ -N reni_neus                                         # Name of the job
+#$ -m bea                                               # Send email at the beginning and end of the job and if aborted
+#$ -M james.gardner@york.ac.uk                          # The email address to notify
+#$ -pe smp 8                                            # 8 cores (8 cores per GPU)
+#$ -l h_rt=12:0:0                                       # 1 hour runtime required to run on the short queue
+#$ -l h_vmem=11G                                        # 11 * 8 = 88G total RAM
+#$ -l gpu=1                                             # request 1 GPU
+#$ -l gpu_type=ampere                                   # request an Ampere GPU, A100
+#$ -o outputs/uge_logs/output_${DATE_STR}_$JOB_ID.txt   # output file
 
 source ~/.bashrc
 
