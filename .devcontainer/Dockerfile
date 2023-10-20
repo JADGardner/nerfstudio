@@ -1,9 +1,9 @@
-FROM dromni/nerfstudio:0.3.3
+FROM dromni/nerfstudio:0.3.4
 
 USER root
 
 RUN apt-get update && \
-    apt-get install curl
+    apt-get install curl -y
 
 RUN apt-get install libopenexr-dev libilmbase-dev
     
