@@ -1,9 +1,3 @@
 [submodule "reni_neus"]
 	path = reni_neus
 	url = git@github.com:JADGardner/reni_neus.git
-[submodule "brdf_clip"]
-	path = brdf_clip
-	url = git@github.com:JADGardner/brdf_clip.git
-[submodule "ns_prolificdreamer"]
-	path = ns_prolificdreamer
-	url = git@github.com:JADGardner/ns_prolificdreamer.git
