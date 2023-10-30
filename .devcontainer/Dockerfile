@@ -1,5 +1,7 @@
 FROM dromni/nerfstudio:0.3.4
 
+ARG CUDA_ARCHITECTURES=86;
+
 USER root
 
 RUN apt-get update && \
@@ -14,8 +16,10 @@ RUN mkdir -p /home/user/.ssh && \
     chown -R user:root /home/user/.ssh && \
     chmod 700 /home/user/.ssh
 
-# remove nerfstudio from /home/user/nerfstudio
+# # remove nerfstudio from /home/user/nerfstudio
 RUN rm -rf /home/user/nerfstudio
+
+RUN pip uninstall -y -r <(pip freeze)
 
 USER 1000
 
