@@ -1,5 +1,5 @@
 BootStrap: docker
-From: jadgardner/nerfstudio:latest
+From: jadgardner/nerfstudio:3.0
 Stage: spython-base
 
 %post
