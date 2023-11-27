@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH --job-name=reni_neus
+#SBATCH --job-name=nerfstudio
 #SBATCH --mail-type=END,FAIL
 #SBATCH --mail-user=james.gardner@york.ac.uk
 #SBATCH --ntasks=1
@@ -12,7 +12,7 @@
 
 source ~/.bashrc
 
-TRAINING_COMMAND="ns-train reni-neus --vis wandb"  # Replace with your training command
+TRAINING_COMMAND="ns-train neusky --vis wandb"  # Replace with your training command
 
 apptainer exec --nv --no-home \
   -B /mnt/scratch/users/$USER:/users/$USER/scratch \

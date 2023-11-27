@@ -1,8 +1,7 @@
 #!/bin/bash
-DATE_STR=$(date +%Y%m%d_%H%M%S)
 #$ -cwd                                                 # Run job from current directory
 #$ -j y                                                 # Combine stdout and stderr into a single file
-#$ -N reni_neus                                         # Name of the job
+#$ -N nerfstudio                                        # Name of the job
 #$ -m bea                                               # Send email at the beginning and end of the job and if aborted
 #$ -M james.gardner@york.ac.uk                          # The email address to notify
 #$ -pe smp 8                                            # 8 cores (8 cores per GPU)
@@ -10,14 +9,13 @@ DATE_STR=$(date +%Y%m%d_%H%M%S)
 #$ -l h_vmem=11G                                        # 11 * 8 = 88G total RAM
 #$ -l gpu=1                                             # request 1 GPU
 #$ -l gpu_type=ampere                                   # request an Ampere GPU, A100
-#$ -o outputs/uge_logs/output_${DATE_STR}_$JOB_ID.txt   # output file
+#$ -o outputs/uge_logs/output_$JOB_ID.txt   # output file
 
 source ~/.bashrc
 
 cd /data/home/$USER/code/nerfstudio
 
-TRAINING_COMMAND="ns-train reni-neus --vis wandb"  # Replace with your training command
-# TRAINING_COMMAND="cd /data/home/$USER/code/nerfstudio && pip install -e . && cd /data/home/$USER/code/nerfstudio/reni_neus/ns_reni && pip install -e . && cd /data/home/$USER/code/nerfstudio/reni_neus && pip install -e ."
+TRAINING_COMMAND="ns-train neusky --vis wandb"  # Replace with your training command
 
 apptainer exec --nv --no-home \
   -B /data/home/$USER:/data/home/$USER \

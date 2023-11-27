@@ -12,7 +12,7 @@ pip install --upgrade pip -y
 
 pip install -e .
 
-cd reni_neus/ns_reni
+cd neusky/ns_reni
 
 pip install -e .
 

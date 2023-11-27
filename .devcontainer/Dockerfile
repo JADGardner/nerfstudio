@@ -1,4 +1,4 @@
-FROM jadgardner/nerfstudio:2.0
+FROM jadgardner/nerfstudio:3.0
 
 ARG CUDA_ARCHITECTURES=86
 ENV CUDA_ARCHITECTURES=${CUDA_ARCHITECTURES}
