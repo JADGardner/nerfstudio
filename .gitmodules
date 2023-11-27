@@ -1,0 +1,3 @@
+[submodule "neusky"]
+	path = neusky
+	url = git@github.com:JADGardner/neusky.git
