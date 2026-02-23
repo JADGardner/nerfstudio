@@ -30,7 +30,6 @@ from torchmetrics.image.lpip import LearnedPerceptualImagePatchSimilarity
 import torchvision.transforms.functional as TF
 
 from nerfstudio.cameras.cameras import Cameras
-from gsplat._torch_impl import quat_to_rotmat
 from nerfstudio.engine.callbacks import TrainingCallback, TrainingCallbackAttributes, TrainingCallbackLocation
 from nerfstudio.engine.optimizers import Optimizers
 from nerfstudio.models.base_model import Model, ModelConfig
@@ -39,10 +38,19 @@ import numpy as np
 from sklearn.neighbors import NearestNeighbors
 from nerfstudio.cameras.camera_optimizers import CameraOptimizer, CameraOptimizerConfig
 
-from gsplat.rasterize import RasterizeGaussians
-from gsplat.project_gaussians import ProjectGaussians
-from gsplat.sh import SphericalHarmonics, num_sh_bases
-from pytorch_msssim import SSIM
+# gsplat imports — old API (pre-1.0), deferred to avoid import errors with newer gsplat
+try:
+    from gsplat._torch_impl import quat_to_rotmat
+    from gsplat.rasterize import RasterizeGaussians
+    from gsplat.project_gaussians import ProjectGaussians
+    from gsplat.sh import SphericalHarmonics, num_sh_bases
+except ImportError:
+    pass  # gsplat 1.x removed these; this model won't work but other methods can load
+
+try:
+    from pytorch_msssim import SSIM
+except ImportError:
+    pass
 
 # need following import for background color override
 from nerfstudio.model_components import renderers
@@ -144,7 +152,7 @@ class GaussianSplattingModelConfig(ModelConfig):
     """stop splitting at this step"""
     sh_degree: int = 4
     """maximum degree of spherical harmonics to use"""
-    camera_optimizer: CameraOptimizerConfig = CameraOptimizerConfig(mode="off")
+    camera_optimizer: CameraOptimizerConfig = field(default_factory=lambda: CameraOptimizerConfig(mode="off"))
     """camera optimizer config"""
     max_gauss_ratio: float = 10.0
     """threshold of ratio of gaussian max to min scale before applying regularization
